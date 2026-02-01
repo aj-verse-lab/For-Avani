@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>What I Love About You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(10px);
+      border-radius: 22px;
+      padding: 30px;
+      width: 90%;
+      max-width: 420px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    p.intro {
+      font-size: 16px;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .item {
+      background: rgba(255,255,255,0.25);
+      border-radius: 18px;
+      padding: 14px 18px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 15px;
+    }
+
+    .item:hover {
+      transform: scale(1.03);
+    }
+
+    .content {
+      display: none;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-top: 10px;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .content.visible {
+      display: block;
+    }
+
+    .closing {
+      margin-top: 30px;
+      font-size: 15px;
+      line-height: 1.6;
+      opacity: 0.9;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>What I love about you 🤍</h1>
+    <p class="intro">
+      There are many ways to love someone.<br>
+      These are a few of mine.
+    </p>
+
+    <div class="item" onclick="toggle(0)">
+      The little things
+      <div class="content" id="c0">
+        The way you notice details.<br>
+        The way you pause before you speak.<br>
+        The way you exist without trying to be anything else.
+      </div>
+    </div>
+
+    <div class="item" onclick="toggle(1)">
+      The way you love
+      <div class="content" id="c1">
+        You love gently.<br>
+        Without noise.<br>
+        Without expectation.<br><br>
+        And somehow, that stays the longest.
+      </div>
+    </div>
+
+    <div class="item" onclick="toggle(2)">
+      The way you heal
+      <div class="content" id="c2">
+        You don’t fix things loudly.<br>
+        You just make them feel lighter.<br><br>
+        Even when you don’t realize you’re doing it.
+      </div>
+    </div>
+
+    <div class="item" onclick="toggle(3)">
+      The way you exist
+      <div class="content" id="c3">
+        You don’t try to take space.<br>
+        You create it.<br><br>
+        And people breathe easier around you.
+      </div>
+    </div>
+
+    <div class="closing">
+      And somewhere in all of this,<br>
+      I love you, Avani.
+    </div>
+  </div>
+
+<script>
+  function toggle(id) {
+    const content = document.getElementById("c" + id);
+    content.classList.toggle("visible");
+  }
+</script>
+
+</body>
+</html>
