@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>If You Ever Doubt Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #232526, #414345);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(14px);
+      border-radius: 22px;
+      padding: 32px;
+      width: 90%;
+      max-width: 430px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    p.intro {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      opacity: 0.9;
+    }
+
+    .choice {
+      background: rgba(255,255,255,0.22);
+      border-radius: 18px;
+      padding: 14px;
+      margin: 10px 0;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .choice:hover {
+      transform: scale(1.03);
+    }
+
+    .message {
+      display: none;
+      font-size: 15px;
+      line-height: 1.7;
+      margin-top: 20px;
+      animation: fadeIn 0.9s ease-in-out;
+    }
+
+    .back {
+      margin-top: 25px;
+      font-size: 14px;
+      opacity: 0.85;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>If you ever doubt us 🤍</h1>
+  <p class="intro">
+    This page is only for days when your heart feels heavy.<br>
+    You don’t need to be sure here.<br>
+    Just honest.
+  </p>
+
+  <div id="choices">
+    <div class="choice" onclick="show('unsure')">I feel unsure</div>
+    <div class="choice" onclick="show('tired')">I feel tired</div>
+    <div class="choice" onclick="show('distant')">I feel distant</div>
+    <div class="choice" onclick="show('reassure')">I just need reassurance</div>
+  </div>
+
+  <div class="message" id="message"></div>
+  <div class="back" id="back" onclick="goBack()">← choose again</div>
+</div>
+
+<script>
+  function show(type) {
+    const msg = document.getElementById("message");
+    document.getElementById("choices").style.display = "none";
+    msg.style.display = "block";
+    document.getElementById("back").style.display = "block";
+
+    if (type === "unsure") {
+      msg.innerHTML = `
+        Feeling unsure doesn’t scare me.<br><br>
+        It doesn’t mean something is wrong.<br>
+        It just means you’re human.<br><br>
+        I’m not here to rush you or push clarity.<br>
+        I’m here to stay while things settle.
+      `;
+    }
+
+    if (type === "tired") {
+      msg.innerHTML = `
+        If you’re tired, you don’t have to explain yourself.<br><br>
+        You don’t have to show up perfectly.<br>
+        You don’t have to carry everything.<br><br>
+        Rest here. I’ve got you.
+      `;
+    }
+
+    if (type === "distant") {
+      msg.innerHTML = `
+        Distance doesn’t mean absence.<br><br>
+        It doesn’t mean you care less.<br>
+        Sometimes it just means you need space to breathe.<br><br>
+        I’ll still be right here when you’re ready.
+      `;
+    }
+
+    if (type === "reassure") {
+      msg.innerHTML = `
+        I choose you.<br><br>
+        Not loudly.<br>
+        Not once.<br><br>
+        But in the quiet, everyday moments.<br><br>
+        And I will keep choosing you.
+      `;
+    }
+  }
+
+  function goBack() {
+    document.getElementById("choices").style.display = "block";
+    document.getElementById("message").style.display = "none";
+    document.getElementById("back").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
