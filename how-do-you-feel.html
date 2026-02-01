@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You, Avani</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(10px);
+      border-radius: 22px;
+      padding: 30px;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    p.intro {
+      font-size: 16px;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    .choices button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 14px;
+      border: none;
+      border-radius: 30px;
+      font-size: 15px;
+      cursor: pointer;
+      background: #fff;
+      color: #6a5acd;
+      transition: 0.3s;
+    }
+
+    .choices button:hover {
+      transform: scale(1.03);
+    }
+
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .back {
+      margin-top: 25px;
+      font-size: 14px;
+      cursor: pointer;
+      opacity: 0.9;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Hey Avani 🤍</h1>
+    <p class="intro">
+      You don’t need to explain anything here.<br>
+      Just tell me how you want to feel right now.
+    </p>
+
+    <div class="choices" id="choices">
+      <button onclick="showMessage('comfort')">🤍 I need comfort</button>
+      <button onclick="showMessage('smile')">🌷 I want to smile</button>
+      <button onclick="showMessage('loved')">💌 I want to feel loved</button>
+      <button onclick="showMessage('here')">🌙 I just want you here</button>
+    </div>
+
+    <div class="message" id="message"></div>
+    <div class="back" id="back" onclick="goBack()">← choose again</div>
+  </div>
+
+<script>
+  function showMessage(type) {
+    const message = document.getElementById("message");
+    const choices = document.getElementById("choices");
+    const back = document.getElementById("back");
+
+    choices.style.display = "none";
+    message.style.display = "block";
+    back.style.display = "block";
+
+    if (type === "comfort") {
+      message.innerHTML = `
+        You don’t have to be strong here.<br><br>
+        You can slow down.<br>
+        You can rest.<br><br>
+        I’m right here, quietly holding space for you,
+        exactly as you are.
+      `;
+    }
+
+    if (type === "smile") {
+      message.innerHTML = `
+        I hope something small makes you smile today.<br><br>
+        Maybe a random thought.<br>
+        Maybe this moment.<br><br>
+        And if you smiled even a little,
+        I’m already happy.
+      `;
+    }
+
+    if (type === "loved") {
+      message.innerHTML = `
+        You are loved in ways you don’t even see.<br><br>
+        In the way I think of you when you’re not around.<br>
+        In the calm you bring into my life.<br><br>
+        You matter more than you know.
+      `;
+    }
+
+    if (type === "here") {
+      message.innerHTML = `
+        No words needed.<br><br>
+        Just imagine me sitting beside you,
+        not asking anything,
+        not fixing anything.<br><br>
+        Just being here.
+      `;
+    }
+  }
+
+  function goBack() {
+    document.getElementById("message").style.display = "none";
+    document.getElementById("choices").style.display = "block";
+    document.getElementById("back").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
