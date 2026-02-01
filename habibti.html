@@ -15,6 +15,7 @@
       align-items: center;
       color: #fff;
       text-align: center;
+      overflow: hidden;
     }
 
     .card {
@@ -24,6 +25,8 @@
       padding: 30px;
       width: 90%;
       max-width: 380px;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
@@ -36,6 +39,12 @@
       min-height: 80px;
       margin-bottom: 25px;
       line-height: 1.5;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    .visible {
+      opacity: 1;
     }
 
     button {
@@ -56,6 +65,57 @@
     .end {
       font-size: 16px;
       line-height: 1.6;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .end.visible {
+      opacity: 1;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff6f91;
+      transform: rotate(45deg);
+      left: 50%;
+      bottom: 50px;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatUp 2s ease-out forwards;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff6f91;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: -10px;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translate(-50%, 0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -200px) rotate(45deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -65,7 +125,7 @@
     <h1>7 reasons why I love you, Avani 🌷</h1>
 
     <div class="reason" id="reasonText">
-      Click when you’re ready.
+      Click when you’re ready
     </div>
 
     <button onclick="nextReason()" id="btn">
@@ -75,31 +135,48 @@
 
 <script>
   const reasons = [
-    "Because with you, even silence feels warm.",
-    "Because you make the world softer just by being in it.",
-    "Because you listen — not to reply, but to understand.",
-    "Because your smile doesn’t try to impress, it just heals.",
-    "Because you make me feel calm in ways I didn’t know I needed.",
-    "Because you are strong, gentle, and real — all at once.",
-    "Because loving you feels easy, honest, and right."
+    "Because with you even silence feels warm",
+    "Because you make the world softer just by being in it",
+    "Because you listen not to reply but to understand",
+    "Because your smile doesn’t try to impress it just heals",
+    "Because you make me feel calm in ways I didn’t know I needed",
+    "Because you are strong gentle and real all at once",
+    "Because loving you feels easy honest and right"
   ];
 
   let index = 0;
+
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 2000);
+  }
 
   function nextReason() {
     const text = document.getElementById("reasonText");
     const btn = document.getElementById("btn");
 
+    // Create 3 hearts on each click
+    for (let i = 0; i < 3; i++) {
+      setTimeout(createHeart, i * 100);
+    }
+
     if (index < reasons.length) {
-      text.innerText = reasons[index];
+      text.classList.remove("visible");
+      setTimeout(() => {
+        text.innerText = reasons[index];
+        text.classList.add("visible");
+      }, 100);
       btn.innerText = "Next reason →";
       index++;
     } else {
       text.innerHTML = `
-        <div class="end">
-          That’s it.<br><br>
-          Not because there aren’t more reasons…<br>
-          but because some feelings don’t need counting.<br><br>
+        <div class="end visible">
+          That’s it<br><br>
+          Not because there aren’t more reasons<br>
+          but because some feelings don’t need counting<br><br>
           I just wanted you to know 🤍
         </div>
       `;
