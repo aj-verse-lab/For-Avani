@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>7 Reasons Why I Love You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      width: 90%;
+      max-width: 380px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .reason {
+      font-size: 17px;
+      min-height: 80px;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    button {
+      padding: 12px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #fff;
+      color: #ff6f91;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .end {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>7 reasons why I love you, Avani 🌷</h1>
+
+    <div class="reason" id="reasonText">
+      Click when you’re ready.
+    </div>
+
+    <button onclick="nextReason()" id="btn">
+      Tell me ❤️
+    </button>
+  </div>
+
+<script>
+  const reasons = [
+    "Because with you, even silence feels warm.",
+    "Because you make the world softer just by being in it.",
+    "Because you listen — not to reply, but to understand.",
+    "Because your smile doesn’t try to impress, it just heals.",
+    "Because you make me feel calm in ways I didn’t know I needed.",
+    "Because you are strong, gentle, and real — all at once.",
+    "Because loving you feels easy, honest, and right."
+  ];
+
+  let index = 0;
+
+  function nextReason() {
+    const text = document.getElementById("reasonText");
+    const btn = document.getElementById("btn");
+
+    if (index < reasons.length) {
+      text.innerText = reasons[index];
+      btn.innerText = "Next reason →";
+      index++;
+    } else {
+      text.innerHTML = `
+        <div class="end">
+          That’s it.<br><br>
+          Not because there aren’t more reasons…<br>
+          but because some feelings don’t need counting.<br><br>
+          I just wanted you to know 🤍
+        </div>
+      `;
+      btn.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>
