@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A Walk Through Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(10px);
+      border-radius: 22px;
+      padding: 30px;
+      width: 90%;
+      max-width: 420px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .section {
+      display: none;
+      font-size: 16px;
+      line-height: 1.7;
+      animation: fadeIn 0.9s ease-in-out;
+    }
+
+    .section.visible {
+      display: block;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #fff;
+      color: #7b5cff;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>A walk through us 🤍</h1>
+
+    <div class="section visible" id="s0">
+      This isn’t a big declaration.<br><br>
+      It’s just a quiet walk.<br>
+      One step at a time.<br><br>
+      Click when you’re ready.
+    </div>
+
+    <div class="section" id="s1">
+      I don’t remember the exact moment I noticed you.<br><br>
+      It wasn’t loud.<br>
+      It wasn’t dramatic.<br><br>
+      It was gentle.<br>
+      Like something settling in.
+    </div>
+
+    <div class="section" id="s2">
+      What I admire about you isn’t just what you show.<br><br>
+      It’s the way you are when no one is asking.<br>
+      The quiet strength.<br>
+      The softness that still holds its ground.
+    </div>
+
+    <div class="section" id="s3">
+      You make space feel safer.<br><br>
+      Conversations feel calmer.<br>
+      Silences feel kinder.<br><br>
+      Being around you feels like exhaling.
+    </div>
+
+    <div class="section" id="s4">
+      There are parts of you I want to protect.<br><br>
+      Not because you can’t handle things.<br>
+      But because you shouldn’t have to carry everything alone.
+    </div>
+
+    <div class="section" id="s5">
+      I don’t promise perfection.<br><br>
+      I promise presence.<br>
+      Honesty.<br>
+      And choosing you in the small, everyday ways.
+    </div>
+
+    <div class="section" id="s6">
+      That’s the walk.<br><br>
+      No finish line.<br>
+      No pressure.<br><br>
+      Just us, continuing.
+    </div>
+
+    <button onclick="next()">Take the next step →</button>
+  </div>
+
+<script>
+  let current = 0;
+  const total = 7;
+
+  function next() {
+    if (current < total - 1) {
+      document.getElementById("s" + current).classList.remove("visible");
+      current++;
+      document.getElementById("s" + current).classList.add("visible");
+    }
+  }
+</script>
+
+</body>
+</html>
