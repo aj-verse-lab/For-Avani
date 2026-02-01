@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Avani ❤️</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      color: white;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      width: 320px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+    }
+
+    #yes {
+      background: #fff;
+      color: #ff4d6d;
+      font-weight: bold;
+    }
+
+    #no {
+      background: transparent;
+      color: white;
+      border: 1px solid white;
+      position: absolute;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 18px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Hey Avani ❤️</h1>
+    <p>
+      From smiles to silences,  
+      from laughter to late-night talks…  
+      my heart chose you quietly.
+    </p>
+
+    <h2>Will you be my girl? 💌</h2>
+
+    <button id="yes" onclick="yesClicked()">YES 💖</button>
+    <button id="no" onmouseover="moveNo()">NO 😳</button>
+
+    <div id="message">
+      💕 You just made my heart the happiest place on Earth.  
+      Happy Valentine’s Day, my girl 💕
+    </div>
+  </div>
+
+<script>
+  function yesClicked() {
+    document.getElementById("message").style.display = "block";
+  }
+
+  function moveNo() {
+    const noBtn = document.getElementById("no");
+    const x = Math.random() * 250;
+    const y = Math.random() * 250;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  }
+</script>
+
+</body>
+</html>
