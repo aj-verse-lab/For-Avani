@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Good Night, Avani</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Stars */
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: floatStar linear infinite;
+    }
+
+    @keyframes floatStar {
+      from {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0.8;
+      }
+    }
+
+    .card {
+      background: rgba(255,255,255,0.14);
+      backdrop-filter: blur(14px);
+      border-radius: 22px;
+      padding: 30px;
+      width: 90%;
+      max-width: 420px;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .text {
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 130px;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #fff;
+      color: #203a43;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .final {
+      margin-top: 20px;
+      font-size: 15px;
+      line-height: 1.6;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Night sound -->
+<audio id="nightSound" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/08/02/audio_61c8c3b5b4.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>Good night, my love 🤍</h1>
+  <div class="text" id="content"></div>
+  <button onclick="next()" id="btn">Continue →</button>
+  <div class="final" id="finalText">
+    Close your eyes now.<br><br>
+    Let the day rest.<br>
+    Let your thoughts slow down.<br><br>
+    I’m right here.<br>
+    Sleep peacefully, Avani 🤍
+  </div>
+</div>
+
+<script>
+  /* Create stars */
+  for (let i = 0; i < 50; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.animationDuration = (15 + Math.random() * 20) + "s";
+    star.style.animationDelay = Math.random() * 20 + "s";
+    document.body.appendChild(star);
+  }
+
+  const parts = [
+    "I’m lying down now, and my mind is still replaying today so slowly. I don’t want it to end. The day began on such a beautiful note because of your good morning message. It made my morning calmer, happier, and full before the day had even started.",
+
+    "That home lunch date with you was one of the best parts of my day. Coming to you, sitting with you, sharing food and time so simply. Being with you like that feels natural, comfortable, and full at the same time. Today felt exactly where it should be. With you.",
+
+    "I keep thinking about how you let me hold your hand and how you let me kiss your forehead. When it’s you, everything feels different. Those moments come with trust and comfort. I forget the rest of the world. I’m just there. With you. Present.",
+
+    "I don’t want anyone except you, Avani. I truly want to build a life with you, step by step, in our own quiet way.",
+
+    "Listening to you talk about Chubby made me smile so much. The affection in your voice stayed with me. I’m really looking forward to meeting him someday. Thank you for the coffee, for watching ReVisits with me, and for making even small moments feel special.",
+
+    "What stays with me the most is the warmth you carry so effortlessly. You make people feel cared for just by being yourself. You really are an amazing person. And thank you for the sweets too, even though dad finished the bhujiya completely.",
+
+    "I loved how you kept me updated while you were on your way back home. Hearing your voice and knowing where you were made me feel close to you even when you weren’t right in front of me. Those small updates mean more to me than you realize.",
+
+    "I love hearing about the people who care about you and the moments that make you happy. Thank you for letting me be a part of those little joys. It made me feel closer to you.",
+
+    "I love you a lot, Avani. And yes, I miss you even after spending time together. Seeing you happy, even when I’m not around, makes me happy too.",
+
+    "Before you sleep, remember this. I’m here for you. You are safe with me. You can tell me anything without holding back. I love you deeply, and from my heart, thank you for letting me into your life."
+  ];
+
+  let i = 0;
+  const content = document.getElementById("content");
+  const btn = document.getElementById("btn");
+  const finalText = document.getElementById("finalText");
+  const sound = document.getElementById("nightSound");
+
+  function next() {
+    if (sound.paused) {
+      sound.volume = 0.2;
+      sound.play();
+    }
+
+    content.style.opacity = 0;
+
+    setTimeout(() => {
+      if (i < parts.length) {
+        content.innerText = parts[i];
+        content.style.opacity = 1;
+        i++;
+      } else {
+        btn.style.display = "none";
+        finalText.style.opacity = 1;
+      }
+    }, 300);
+  }
+
+  next();
+</script>
+
+</body>
+</html>
