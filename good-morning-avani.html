@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Good Morning, Avani</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #5a3e36;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .sun {
+      position: absolute;
+      top: 10%;
+      right: 15%;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #fff5c3, #ffd89b);
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: floatSun 10s ease-in-out infinite;
+    }
+
+    @keyframes floatSun {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(12px); }
+      100% { transform: translateY(0); }
+    }
+
+    .card {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 32px;
+      width: 90%;
+      max-width: 420px;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .text {
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 130px;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    button {
+      margin-top: 26px;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 30px;
+      background: #ff9a76;
+      color: #fff;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .final {
+      margin-top: 22px;
+      font-size: 15px;
+      line-height: 1.6;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    /* Teddy */
+    .teddy {
+      font-size: 80px;
+      position: absolute;
+      bottom: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: bottom 1.2s ease;
+      z-index: 3;
+    }
+
+    .teddy.show {
+      bottom: 30px;
+    }
+
+    /* Hearts */
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      color: #ff6f91;
+      animation: floatHeart 3s ease-in-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120px);
+        opacity: 0;
+      }
+    }
+
+    /* Love text */
+    .love {
+      position: absolute;
+      bottom: 140px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.8);
+      font-size: 20px;
+      color: #ff6f91;
+      opacity: 0;
+      transition: all 1.2s ease;
+      z-index: 4;
+    }
+
+    .love.show {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+  </style>
+</head>
+<body>
+
+<div class="sun"></div>
+
+<div class="card">
+  <h1>Good morning, Avani 🤍</h1>
+  <div class="text" id="content"></div>
+  <button onclick="next()" id="btn">Good morning →</button>
+  <div class="final" id="finalText">
+    Take today gently.<br><br>
+    You don’t need to rush.<br>
+    You don’t need to prove anything.<br><br>
+    Just be you.<br><br>
+    I’m already proud of you 🤍
+  </div>
+</div>
+
+<div class="teddy" id="teddy">🧸</div>
+<div class="love" id="loveText">I love you, Avani 💖</div>
+
+<script>
+  const parts = [
+    "Before the day begins properly, I just want you to know this. You were my first calm thought this morning.",
+    "I hope you woke up feeling rested. And even if you didn’t, remember you never have to face the day alone.",
+    "Somewhere between all the things you have to do today, I hope you pause and feel how deeply you are cared for.",
+    "You bring warmth into people’s lives just by being yourself. That’s something very rare, Avani.",
+    "Whatever today brings, I believe in you. In your heart, your strength, and your kindness."
+  ];
+
+  let i = 0;
+  const content = document.getElementById("content");
+  const btn = document.getElementById("btn");
+  const finalText = document.getElementById("finalText");
+  const teddy = document.getElementById("teddy");
+  const love = document.getElementById("loveText");
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.bottom = "40px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 3000);
+  }
+
+  function next() {
+    content.style.opacity = 0;
+
+    setTimeout(() => {
+      if (i < parts.length) {
+        content.innerText = parts[i];
+        content.style.opacity = 1;
+        i++;
+      } else {
+        btn.style.display = "none";
+        finalText.style.opacity = 1;
+
+        // Teddy + love appear
+        teddy.classList.add("show");
+        setTimeout(() => love.classList.add("show"), 800);
+
+        // Hearts burst
+        for (let h = 0; h < 12; h++) {
+          setTimeout(createHeart, h * 150);
+        }
+      }
+    }, 300);
+  }
+
+  next();
+</script>
+
+</body>
+</html>
