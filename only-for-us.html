@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Only For Us</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Stars */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: twinkle 4s infinite alternate;
+}
+@keyframes twinkle {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+/* Card */
+.card {
+  position: relative;
+  z-index: 5;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 26px;
+  padding: 30px;
+  width: 90%;
+  max-width: 420px;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 90px;
+}
+
+button {
+  margin-top: 18px;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 30px;
+  background: #ff6f91;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Input */
+input {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  width: 80%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Teddy */
+.teddy {
+  font-size: 90px;
+  position: absolute;
+  bottom: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: bottom 1.2s ease;
+  cursor: pointer;
+}
+.teddy.show { bottom: 30px; }
+
+/* Hearts */
+.heart {
+  position: absolute;
+  font-size: 22px;
+  animation: float 3s ease forwards;
+}
+@keyframes float {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-150px); opacity: 0; }
+}
+
+/* Music toggle */
+.music {
+  position: fixed;
+  top: 12px;
+  right: 14px;
+  font-size: 14px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+/* Close eyes */
+.close {
+  display: none;
+  font-size: 16px;
+  line-height: 1.8;
+  animation: fadeIn 2s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="music" onclick="toggleMusic()">🔊 sound</div>
+
+<div class="card" id="card">
+  <h1>Only for us 🤍</h1>
+  <p id="text">Before you go ahead, tell me your name.</p>
+  <input id="nameInput" placeholder="type here">
+  <button onclick="start()">Enter</button>
+</div>
+
+<div class="teddy" id="teddy" onclick="teddyTap()">🧸</div>
+
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1c7a4a5d18.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* Stars */
+for (let i = 0; i < 60; i++) {
+  const star = document.createElement("div");
+  star.className = "star";
+  star.style.width = star.style.height = Math.random()*2+1+"px";
+  star.style.left = Math.random()*100+"vw";
+  star.style.top = Math.random()*100+"vh";
+  document.body.appendChild(star);
+}
+
+const text = document.getElementById("text");
+const card = document.getElementById("card");
+const teddy = document.getElementById("teddy");
+const music = document.getElementById("bgMusic");
+
+const daily = [
+  "Today, be gentle with yourself. You are deeply loved.",
+  "You don’t have to be perfect to be chosen.",
+  "There’s calm waiting for you today.",
+  "Someone believes in you more than you know.",
+  "You are safe here."
+];
+
+function start() {
+  const name = document.getElementById("nameInput").value.trim().toLowerCase();
+  if (!name) return;
+
+  card.innerHTML = `
+    <h1>Hello, ${name} 🤍</h1>
+    <p>${daily[new Date().getDate() % daily.length]}</p>
+    <button onclick="next()">Stay a little</button>
+  `;
+}
+
+let step = 0;
+function next() {
+  step++;
+  if (step === 1) {
+    card.innerHTML = `
+      <p>Before you leave, answer this just for us.</p>
+      <input id="answer" placeholder="What makes you feel safe?">
+      <button onclick="save()">Save</button>
+    `;
+  }
+  if (step === 2) {
+    teddy.classList.add("show");
+    card.innerHTML = `
+      <p>Tap the teddy 🤍</p>
+    `;
+  }
+}
+
+function save() {
+  const ans = document.getElementById("answer").value;
+  localStorage.setItem("onlyForUs", ans);
+  next();
+}
+
+function teddyTap() {
+  for (let i = 0; i < 10; i++) {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerText = "💖";
+    h.style.left = Math.random()*100+"vw";
+    h.style.bottom = "50px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),3000);
+  }
+
+  card.innerHTML = `
+    <div class="close">
+      Close your eyes now 🤍<br><br>
+      Take one slow breath.<br><br>
+      Whatever you’re carrying tonight,<br>
+      you don’t have to hold it alone.<br><br>
+      I’m here.
+    </div>
+  `;
+}
+
+function toggleMusic() {
+  if (music.paused) music.play();
+  else music.pause();
+}
+</script>
+
+</body>
+</html>
