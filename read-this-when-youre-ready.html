@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Read This When You’re Ready</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #141e30, #243b55);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+}
+
+.card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 26px;
+  padding: 34px;
+  width: 90%;
+  max-width: 420px;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.section {
+  display: none;
+  font-size: 16px;
+  line-height: 1.8;
+  animation: fadeIn 1s ease forwards;
+}
+
+.section.show {
+  display: block;
+}
+
+button {
+  margin-top: 26px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  background: #ff9db8;
+  color: #2c2c2c;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Read this when you’re ready 🤍</h1>
+
+  <div class="section show" id="s0">
+    There’s nothing you need to do here.<br><br>
+    No response expected.<br>
+    No feeling required.<br><br>
+    Just take your time.
+  </div>
+
+  <div class="section" id="s1">
+    I want you to know this first.<br><br>
+    You don’t have to earn love with effort,<br>
+    silence, or strength.<br><br>
+    You are enough as you are.
+  </div>
+
+  <div class="section" id="s2">
+    I don’t want to rush moments with you.<br><br>
+    I don’t want to skip steps.<br><br>
+    I want things that last,<br>
+    and those grow slowly.
+  </div>
+
+  <div class="section" id="s3">
+    If there are days you feel unsure,<br>
+    distant,<br>
+    or quiet,<br><br>
+    I won’t disappear.<br>
+    I’ll stay steady.
+  </div>
+
+  <div class="section" id="s4">
+    Loving you doesn’t feel dramatic.<br><br>
+    It feels calm.<br>
+    Intentional.<br>
+    Safe.<br><br>
+    And that’s how I know it’s real.
+  </div>
+
+  <div class="section" id="s5">
+    There’s no pressure in this.<br><br>
+    Just honesty.<br>
+    Presence.<br>
+    Care.<br><br>
+    And a lot of quiet choosing.
+  </div>
+
+  <div class="section" id="s6">
+    Whenever you’re ready to believe this,<br><br>
+    know that I choose you.<br>
+    Not loudly.<br>
+    Not once.<br><br>
+    But every day.<br><br>
+    I love you, Avani 🤍
+  </div>
+
+  <button onclick="next()" id="btn">Continue →</button>
+</div>
+
+<script>
+let step = 0;
+function next() {
+  document.getElementById("s" + step).classList.remove("show");
+  step++;
+  const nextSection = document.getElementById("s" + step);
+  if (nextSection) {
+    nextSection.classList.add("show");
+  }
+  if (step === 6) {
+    document.getElementById("btn").style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
