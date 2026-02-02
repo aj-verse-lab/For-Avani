@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Six Letters About Us</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #fdeff9, #ec38bc);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #5a1f3d;
+}
+
+.card {
+  background: rgba(255,255,255,0.85);
+  border-radius: 26px;
+  padding: 32px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.letter {
+  display: none;
+  font-size: 16px;
+  line-height: 1.7;
+  animation: fadeIn 0.9s ease forwards;
+}
+
+.letter.show {
+  display: block;
+}
+
+button {
+  margin-top: 26px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  background: #ec38bc;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Six letters about us 🤍</h1>
+
+  <div class="letter show" id="l0">
+    Before anything else, know this.<br><br>
+    These aren’t reasons meant to convince you.<br>
+    They’re just truths I feel quietly,<br>
+    every time I think of us.
+  </div>
+
+  <div class="letter" id="l1">
+    <strong>Letter One</strong><br><br>
+    We feel easy together.<br><br>
+    No performances.<br>
+    No pretending.<br><br>
+    Just two people showing up as they are,
+    and feeling safe doing that.
+  </div>
+
+  <div class="letter" id="l2">
+    <strong>Letter Two</strong><br><br>
+    We balance each other.<br><br>
+    Where one of us feels heavy,
+    the other brings calm.<br><br>
+    Not by fixing,<br>
+    but by simply being there.
+  </div>
+
+  <div class="letter" id="l3">
+    <strong>Letter Three</strong><br><br>
+    We listen to each other.<br><br>
+    Not just to respond,<br>
+    but to understand.<br><br>
+    That kind of attention
+    builds something lasting.
+  </div>
+
+  <div class="letter" id="l4">
+    <strong>Letter Four</strong><br><br>
+    We grow together.<br><br>
+    Not at the same pace,
+    not in the same way,<br><br>
+    but always with respect
+    for each other’s journey.
+  </div>
+
+  <div class="letter" id="l5">
+    <strong>Letter Five</strong><br><br>
+    We choose each other
+    in small, everyday ways.<br><br>
+    In messages.<br>
+    In presence.<br>
+    In effort.<br><br>
+    That choice matters.
+  </div>
+
+  <div class="letter" id="l6">
+    <strong>Letter Six</strong><br><br>
+    And finally, this.<br><br>
+    Being with you feels right.<br>
+    Calm.<br>
+    Honest.<br><br>
+    That’s how I know we’re perfect
+    for each other, Avani.<br><br>
+    I love you 🤍
+  </div>
+
+  <button onclick="next()" id="btn">Open next letter 💌</button>
+</div>
+
+<script>
+let current = 0;
+function next() {
+  const currentLetter = document.getElementById("l" + current);
+  currentLetter.classList.remove("show");
+  current++;
+
+  const nextLetter = document.getElementById("l" + current);
+  if (nextLetter) {
+    nextLetter.classList.add("show");
+  }
+
+  if (current === 6) {
+    document.getElementById("btn").style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
