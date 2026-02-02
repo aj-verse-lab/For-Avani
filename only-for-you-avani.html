@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Only For You, Avani</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #1c1c2b, #2e2e4d);
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Stars */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 4s infinite alternate;
+}
+@keyframes twinkle {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+/* Center card */
+.card {
+  position: relative;
+  z-index: 3;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 26px;
+  padding: 30px;
+  width: 90%;
+  max-width: 420px;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 30px;
+  background: #ff6f91;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Teddy */
+.teddy {
+  font-size: 90px;
+  position: absolute;
+  bottom: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: bottom 1.2s ease;
+  cursor: pointer;
+  z-index: 4;
+}
+.teddy.show { bottom: 30px; }
+
+/* Love text */
+.love {
+  position: absolute;
+  bottom: 140px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  font-size: 20px;
+  color: #ff9db8;
+  opacity: 0;
+  transition: all 1s ease;
+}
+.love.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Hearts */
+.heart {
+  position: absolute;
+  font-size: 22px;
+  animation: float 3s ease forwards;
+}
+@keyframes float {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-140px); opacity: 0; }
+}
+
+/* Easter egg */
+.secret {
+  position: fixed;
+  bottom: 8px;
+  right: 10px;
+  font-size: 10px;
+  opacity: 0.15;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Only for you, Avani 🤍</h1>
+  <p id="text"></p>
+  <button onclick="next()">Tap gently ✨</button>
+</div>
+
+<div class="teddy" id="teddy" onclick="teddyTapped()">🧸</div>
+<div class="love" id="loveText">I love you, Avani 💖</div>
+<div class="secret" onclick="secret()">for us</div>
+
+<script>
+/* Stars */
+for (let i = 0; i < 50; i++) {
+  const star = document.createElement("div");
+  star.className = "star";
+  star.style.width = star.style.height = Math.random()*2+1+"px";
+  star.style.left = Math.random()*100+"vw";
+  star.style.top = Math.random()*100+"vh";
+  document.body.appendChild(star);
+}
+
+/* Main messages */
+const messages = [
+  "This space exists just for you. No noise. No expectations.",
+  "You don’t need to do anything here. Just be.",
+  "Somewhere out here, someone is thinking about you very softly.",
+  "You are safe. You are cared for. You are deeply loved.",
+  "There’s something waiting for you below 🤍"
+];
+
+let i = 0;
+const text = document.getElementById("text");
+const teddy = document.getElementById("teddy");
+const love = document.getElementById("loveText");
+
+function next() {
+  if (i < messages.length) {
+    text.innerText = messages[i];
+    i++;
+    if (i === messages.length) {
+      setTimeout(() => teddy.classList.add("show"), 800);
+    }
+  }
+}
+
+/* Teddy interaction */
+function teddyTapped() {
+  love.classList.add("show");
+  for (let h = 0; h < 10; h++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+    heart.style.left = Math.random()*100+"vw";
+    heart.style.bottom = "50px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),3000);
+  }
+}
+
+/* Easter egg */
+function secret() {
+  alert("No matter what the world looks like, I choose you. Always. 🤍");
+}
+</script>
+
+</body>
+</html>
