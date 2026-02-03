@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Come a Little Closer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.card {
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(14px);
+  border-radius: 28px;
+  padding: 36px;
+  width: 90%;
+  max-width: 420px;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.8;
+  min-height: 140px;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+button {
+  margin-top: 28px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  background: #ff9db8;
+  color: #2c2c2c;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.final {
+  display: none;
+  font-size: 16px;
+  line-height: 1.9;
+  margin-top: 20px;
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: float 4s ease forwards;
+  opacity: 0;
+}
+
+@keyframes float {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-160px); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Come a little closer 🤍</h1>
+
+  <div class="text" id="text"></div>
+
+  <button id="btn" onclick="next()">Stay with me →</button>
+
+  <div class="final" id="finalText">
+    If I were with you right now,<br><br>
+    I’d pull you close.<br>
+    Not to say anything.<br>
+    Just to feel you there.<br><br>
+    This is me, wanting you.<br>
+    Missing you.<br><br>
+    And counting the moments<br>
+    till I get to see you again, Avani 🤍
+  </div>
+</div>
+
+<script>
+const parts = [
+  "I know the day has passed, but you’re still on my mind.",
+  "Not loudly. Not urgently. Just… there.",
+  "I keep thinking about how it feels to be around you.",
+  "How easy it is. How real it feels.",
+  "There’s a kind of closeness with you that I don’t rush.",
+  "Because I want it to last.",
+  "And right now, I just miss you."
+];
+
+let i = 0;
+const text = document.getElementById("text");
+const btn = document.getElementById("btn");
+const finalText = document.getElementById("finalText");
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.bottom = "40px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 4000);
+}
+
+function next() {
+  text.style.opacity = 0;
+
+  setTimeout(() => {
+    if (i < parts.length) {
+      text.innerText = parts[i];
+      text.style.opacity = 1;
+      createHeart();
+      i++;
+    } else {
+      btn.style.display = "none";
+      finalText.style.display = "block";
+      for (let h = 0; h < 8; h++) {
+        setTimeout(createHeart, h * 250);
+      }
+    }
+  }, 300);
+}
+
+next();
+</script>
+
+</body>
+</html>
