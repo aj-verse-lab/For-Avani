@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>15 Moments With Me</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #1c1b29, #3a3a5d);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* soft floating particles */
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-10vh); opacity: 0.7; }
+}
+
+.card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 30px;
+  padding: 36px;
+  width: 90%;
+  max-width: 440px;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.counter {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-bottom: 18px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.8;
+  min-height: 150px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+button {
+  margin-top: 26px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  background: #ff9db8;
+  color: #2c2c2c;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.final {
+  display: none;
+  font-size: 16px;
+  line-height: 1.9;
+  margin-top: 20px;
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>15 moments with me 🤍</h1>
+  <div class="counter" id="counter">Moment 1 of 15</div>
+
+  <div class="text" id="text"></div>
+
+  <button id="btn" onclick="next()">Stay a little longer →</button>
+
+  <div class="final" id="finalText">
+    That’s all for tonight.<br><br>
+    Not because there isn’t more to say,<br>
+    but because some feelings are meant to be felt quietly.<br><br>
+    If you miss me later,<br>
+    come back here.<br><br>
+    I’ll still be right here, Avani 🤍
+  </div>
+</div>
+
+<script>
+// background particles
+for (let i = 0; i < 45; i++) {
+  const p = document.createElement("div");
+  p.className = "particle";
+  p.style.left = Math.random() * 100 + "vw";
+  p.style.animationDuration = (18 + Math.random() * 20) + "s";
+  p.style.animationDelay = Math.random() * 20 + "s";
+  document.body.appendChild(p);
+}
+
+const moments = [
+  "Pause here for a second. You don’t need to rush anything tonight.",
+  "I just wanted a moment where it’s only you and me. No noise.",
+  "You stayed on my mind today more than you know.",
+  "Not because of something you did. Just because of who you are.",
+  "There’s a calm I feel when I think of you.",
+  "Being close to you feels easy. Honest. Real.",
+  "That’s rare, and I don’t take it lightly.",
+  "Sometimes I imagine you sitting next to me, doing nothing.",
+  "Just presence. Just comfort.",
+  "That thought alone makes me smile.",
+  "I miss the way it feels to be around you.",
+  "Not in a loud way. In a quiet, steady way.",
+  "I want to see you soon. To talk. To laugh.",
+  "To be close without needing a reason.",
+  "Tonight, I just want you to know this. You matter deeply to me."
+];
+
+let i = 0;
+const text = document.getElementById("text");
+const btn = document.getElementById("btn");
+const counter = document.getElementById("counter");
+const finalText = document.getElementById("finalText");
+
+function next() {
+  text.style.opacity = 0;
+
+  setTimeout(() => {
+    if (i < moments.length) {
+      text.innerText = moments[i];
+      text.style.opacity = 1;
+      counter.innerText = `Moment ${i + 1} of 15`;
+      i++;
+    } else {
+      btn.style.display = "none";
+      counter.style.display = "none";
+      finalText.style.display = "block";
+    }
+  }, 300);
+}
+
+next();
+</script>
+
+</body>
+</html>
