@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Good Morning, Avani</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #2c3e50, #fbc2eb, #ffecd2);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #4a2f2f;
+  overflow: hidden;
+}
+
+/* Sunrise */
+.sun {
+  position: absolute;
+  bottom: -120px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, #fff2b2, #ffb347);
+  border-radius: 50%;
+  animation: rise 10s ease forwards;
+  opacity: 0.7;
+}
+
+@keyframes rise {
+  to { bottom: 55%; }
+}
+
+/* Card */
+.card {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 28px;
+  padding: 34px;
+  width: 90%;
+  max-width: 420px;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 120px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+button {
+  margin-top: 24px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  background: #ff8fab;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.choice {
+  display: none;
+  background: rgba(255,140,160,0.15);
+  border-radius: 20px;
+  padding: 14px;
+  margin: 10px 0;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.final {
+  display: none;
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Kiss */
+.kiss {
+  font-size: 40px;
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  animation: pop 1s ease forwards;
+}
+
+@keyframes pop {
+  to { transform: translateX(-50%) scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="sun"></div>
+
+<div class="card">
+  <h1>Good morning, Avani 🤍</h1>
+
+  <div class="text" id="text"></div>
+
+  <button id="btn" onclick="next()">Good morning →</button>
+
+  <div class="choice" onclick="choose('calm')">🌷 I want a calm day</div>
+  <div class="choice" onclick="choose('confident')">✨ I want to feel confident</div>
+  <div class="choice" onclick="choose('loved')">💖 I want to feel loved</div>
+
+  <div class="final" id="finalText"></div>
+</div>
+
+<script>
+const parts = [
+  "Before the world starts asking things from you, I just want you to pause here for a moment.",
+  "You were my first thought this morning. Not loudly. Just softly. Like a warm feeling.",
+  "You don’t have to rush today. You don’t have to prove anything. You are already enough.",
+  "Tell me how you want today to feel."
+];
+
+let i = 0;
+const text = document.getElementById("text");
+const btn = document.getElementById("btn");
+const choices = document.getElementsByClassName("choice");
+const finalText = document.getElementById("finalText");
+
+function next() {
+  text.style.opacity = 0;
+  setTimeout(() => {
+    text.innerText = parts[i];
+    text.style.opacity = 1;
+    i++;
+    if (i === parts.length) {
+      btn.style.display = "none";
+      for (let c of choices) c.style.display = "block";
+    }
+  }, 300);
+}
+
+function choose(type) {
+  for (let c of choices) c.style.display = "none";
+
+  if (type === "calm") {
+    finalText.innerHTML = "Take today slowly. Breathe. You’re allowed to move gently. I’m right here with you 🤍";
+  }
+
+  if (type === "confident") {
+    finalText.innerHTML = "You carry quiet strength. Walk into today knowing you are capable, steady, and supported 🤍";
+  }
+
+  if (type === "loved") {
+    finalText.innerHTML = "You are deeply loved, Avani. In small thoughts. In quiet moments. In ways that don’t fade 🤍";
+  }
+
+  finalText.style.display = "block";
+
+  const kiss = document.createElement("div");
+  kiss.className = "kiss";
+  kiss.innerText = "💋";
+  document.body.appendChild(kiss);
+}
+
+next();
+</script>
+
+</body>
+</html>
