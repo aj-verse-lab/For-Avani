@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I’m Here With You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #0e1a2b, #1f3b4d);
+  font-family: 'Georgia', serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* soft floating lights */
+.light {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-10vh); opacity: 0.8; }
+}
+
+.card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(16px);
+  border-radius: 28px;
+  padding: 36px;
+  width: 90%;
+  max-width: 440px;
+  text-align: center;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 18px;
+  font-weight: normal;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.9;
+  min-height: 150px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+button {
+  margin-top: 26px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  background: #f4b6c2;
+  color: #2c2c2c;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.final {
+  display: none;
+  font-size: 16px;
+  line-height: 1.9;
+  margin-top: 22px;
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>I’m here with you 🤍</h1>
+
+  <div class="text" id="text"></div>
+
+  <button id="btn" onclick="next()">Stay with me →</button>
+
+  <div class="final" id="finalText">
+    If I were there with you right now,<br><br>
+    I would not rush you.<br>
+    I would not ask anything from you.<br><br>
+    I would just pull you close,<br>
+    kiss your forehead softly,<br>
+    and sit with you in silence.<br><br>
+    Even from here,<br>
+    that is exactly what I am doing.<br><br>
+    You are safe with me.<br>
+    You are wanted.<br>
+    And I cannot wait to hold you again, Avani 🤍
+  </div>
+</div>
+
+<script>
+// floating lights
+for (let i = 0; i < 45; i++) {
+  const l = document.createElement("div");
+  l.className = "light";
+  l.style.left = Math.random() * 100 + "vw";
+  l.style.animationDuration = (18 + Math.random() * 20) + "s";
+  l.style.animationDelay = Math.random() * 20 + "s";
+  document.body.appendChild(l);
+}
+
+const parts = [
+  "If today felt long, come sit here for a moment.",
+  "You do not have to be strong right now.",
+  "You do not have to explain anything.",
+  "I just want you to feel held.",
+  "Even from a different city, my care does not feel distant.",
+  "I like imagining you reading this and smiling quietly.",
+  "I miss you. Not in a heavy way. In a soft, close way.",
+  "The kind that makes me want to see you soon."
+];
+
+let i = 0;
+const text = document.getElementById("text");
+const btn = document.getElementById("btn");
+const finalText = document.getElementById("finalText");
+
+function next() {
+  text.style.opacity = 0;
+
+  setTimeout(() => {
+    if (i < parts.length) {
+      text.innerText = parts[i];
+      text.style.opacity = 1;
+      i++;
+    } else {
+      btn.style.display = "none";
+      finalText.style.display = "block";
+    }
+  }, 300);
+}
+
+next();
+</script>
+
+</body>
+</html>
