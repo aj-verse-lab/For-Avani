@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Letters I Can’t Send</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a0f1a, #2a1b2e);
+  font-family: 'Georgia', serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 30px 15px;
+}
+
+.container {
+  max-width: 520px;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+.envelope {
+  background: rgba(255,255,255,0.08);
+  border-radius: 22px;
+  padding: 22px;
+  margin-bottom: 18px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+  transform: scale(1.02);
+}
+
+.title {
+  font-size: 16px;
+}
+
+.letter {
+  display: none;
+  margin-top: 16px;
+  font-size: 15px;
+  line-height: 1.9;
+  opacity: 0;
+  animation: fadeIn 1.2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Letters I Can’t Send on WhatsApp</h1>
+  <div class="subtitle">Open them slowly. In any order.</div>
+
+  <div class="envelope" onclick="openLetter(0)">
+    <div class="title">When I miss you</div>
+    <div class="letter">
+      I miss you in the quietest way.<br><br>
+      Not the kind that hurts, but the kind that lingers.
+      The kind that makes me imagine you reading this and smiling softly.
+      The kind that reminds me how naturally you have become a part of my days.
+      Distance only makes me more sure of you.
+    </div>
+  </div>
+
+  <div class="envelope" onclick="openLetter(1)">
+    <div class="title">What I notice about you</div>
+    <div class="letter">
+      I notice how you make spaces warmer just by being in them.
+      How people relax around you.
+      How you listen with your whole heart.
+      You do not try to be special.
+      You just are.
+      And I fall a little more every time I notice that.
+    </div>
+  </div>
+
+  <div class="envelope" onclick="openLetter(2)">
+    <div class="title">What I feel when you choose me</div>
+    <div class="letter">
+      When you choose me, even in small ways,
+      it makes me want to protect that choice.
+      To be gentle with you.
+      To be steady.
+      To make sure you always feel safe where you stand with me.
+    </div>
+  </div>
+
+  <div class="envelope" onclick="openLetter(3)">
+    <div class="title">What I imagine when I think of us</div>
+    <div class="letter">
+      I imagine calm mornings.
+      Unnecessary laughter.
+      Long conversations that do not need conclusions.
+      Your head resting comfortably.
+      My hand finding yours without thinking.
+      A life that grows slowly, but deeply.
+    </div>
+  </div>
+
+  <div class="envelope" onclick="openLetter(4)">
+    <div class="title">What I want you to remember tonight</div>
+    <div class="letter">
+      You are not alone.
+      You do not have to carry everything by yourself.
+      You are allowed to rest.
+      And somewhere, there is someone who is very glad you exist.
+      That someone is me.
+    </div>
+  </div>
+
+  <div class="envelope" onclick="openLetter(5)">
+    <div class="title">The one thing I have not said enough</div>
+    <div class="letter">
+      Loving you does not feel dramatic.
+      It feels certain.
+      It feels calm.
+      And it makes me want to meet you again,
+      just to sit next to you and smile for no reason.
+    </div>
+  </div>
+
+  <footer>
+    Made with quiet love 🤍
+  </footer>
+</div>
+
+<script>
+function openLetter(index) {
+  const letters = document.querySelectorAll('.letter');
+  letters[index].style.display = 'block';
+}
+</script>
+
+</body>
+</html>
