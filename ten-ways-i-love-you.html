@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ten Ways I Love You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1a233a, #0b1020);
+  font-family: 'Georgia', serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+}
+
+.love {
+  font-size: 24px;
+  margin-bottom: 6px;
+  opacity: 0;
+  animation: fadeIn 1.2s forwards;
+}
+
+.language {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-bottom: 22px;
+  opacity: 0;
+  animation: fadeIn 1.6s forwards;
+}
+
+.reason {
+  font-size: 16px;
+  line-height: 1.9;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+button {
+  margin-top: 34px;
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: none;
+  background: rgba(255,255,255,0.15);
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.counter {
+  margin-top: 14px;
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="love" id="love"></div>
+  <div class="language" id="language"></div>
+  <div class="reason" id="reason"></div>
+
+  <button onclick="nextSlide()">Next</button>
+  <div class="counter" id="counter"></div>
+</div>
+
+<script>
+const slides = [
+  {
+    love: "I love you",
+    language: "English",
+    reason: "I love you because being with you feels natural and calm, like my heart knows where it belongs."
+  },
+  {
+    love: "Te amo",
+    language: "Spanish",
+    reason: "I love you because you make even ordinary days feel warmer just by being yourself."
+  },
+  {
+    love: "Je t’aime",
+    language: "French",
+    reason: "I love you because you listen with care and make me feel understood without judgment."
+  },
+  {
+    love: "Ich liebe dich",
+    language: "German",
+    reason: "I love you because you bring peace into my life without ever trying to change me."
+  },
+  {
+    love: "Ti amo",
+    language: "Italian",
+    reason: "I love you because your presence makes everything feel lighter and easier."
+  },
+  {
+    love: "Main tumse pyaar karta hoon",
+    language: "Hindi",
+    reason: "I love you because you feel like home to me, no matter where we are."
+  },
+  {
+    love: "Saranghae",
+    language: "Korean",
+    reason: "I love you because your kindness shows up quietly in the smallest moments."
+  },
+  {
+    love: "Aishiteru",
+    language: "Japanese",
+    reason: "I love you because loving you feels steady, safe, and deeply real."
+  },
+  {
+    love: "Wo ai ni",
+    language: "Mandarin Chinese",
+    reason: "I love you because you choose me in ways that truly matter."
+  },
+  {
+    love: "Sempre tuo",
+    language: "Italian (romantic phrase)",
+    reason: "I love you because every version of life feels better with you in it."
+  }
+];
+
+let index = 0;
+
+function nextSlide() {
+  const slide = slides[index];
+
+  document.getElementById("love").style.opacity = 0;
+  document.getElementById("language").style.opacity = 0;
+  document.getElementById("reason").style.opacity = 0;
+
+  setTimeout(() => {
+    document.getElementById("love").innerText = slide.love;
+    document.getElementById("language").innerText = slide.language;
+    document.getElementById("reason").innerText = slide.reason;
+
+    document.getElementById("love").style.opacity = 1;
+    document.getElementById("language").style.opacity = 1;
+    document.getElementById("reason").style.opacity = 1;
+
+    document.getElementById("counter").innerText = (index + 1) + " of 10";
+
+    index++;
+    if (index >= slides.length) {
+      document.querySelector("button").style.display = "none";
+    }
+  }, 400);
+}
+
+nextSlide();
+</script>
+
+</body>
+</html>
