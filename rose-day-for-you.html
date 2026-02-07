@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A Rose For You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #2a0f1a, #0b0306);
+  font-family: 'Georgia', serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Falling petals */
+.petal {
+  position: absolute;
+  font-size: 18px;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  from { transform: translateY(-10vh) rotate(0deg); }
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* Card */
+.card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(18px);
+  border-radius: 30px;
+  padding: 38px;
+  width: 90%;
+  max-width: 440px;
+  text-align: center;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: normal;
+  margin-bottom: 22px;
+}
+
+.rose {
+  font-size: 60px;
+  margin-bottom: 20px;
+  animation: bloom 4s ease forwards;
+}
+
+@keyframes bloom {
+  from { transform: scale(0.6); opacity: 0.6; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.9;
+  min-height: 130px;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+button {
+  margin-top: 28px;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  background: #f4b6c2;
+  color: #2c2c2c;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.final {
+  display: none;
+  font-size: 16px;
+  line-height: 2;
+  margin-top: 24px;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>For you, on Rose Day 🌹</h1>
+
+  <div class="rose">🌹</div>
+
+  <div class="text" id="text"></div>
+
+  <button id="btn" onclick="next()">Open a petal</button>
+
+  <div class="final" id="finalText">
+    This rose does not wilt.<br>
+    It does not fade with time.<br><br>
+    Because it carries something real.<br><br>
+    My care for you.<br>
+    My choice of you.<br>
+    My love, given gently and honestly.<br><br>
+    Happy Rose Day, Avani 🤍
+  </div>
+</div>
+
+<script>
+// falling petals
+for (let i = 0; i < 25; i++) {
+  const p = document.createElement("div");
+  p.className = "petal";
+  p.innerText = "🌸";
+  p.style.left = Math.random() * 100 + "vw";
+  p.style.animationDuration = (12 + Math.random() * 10) + "s";
+  p.style.animationDelay = Math.random() * 10 + "s";
+  document.body.appendChild(p);
+}
+
+const petals = [
+  "This is not just a rose. It is a moment I want you to keep.",
+  "I give this to you because you bring softness into my life.",
+  "Because your presence feels warm and steady.",
+  "Because loving you feels natural, not forced.",
+  "Because even on ordinary days, you make things feel special.",
+  "And because you deserve love that is gentle and real."
+];
+
+let i = 0;
+const text = document.getElementById("text");
+const btn = document.getElementById("btn");
+const finalText = document.getElementById("finalText");
+
+function next() {
+  text.style.opacity = 0;
+
+  setTimeout(() => {
+    if (i < petals.length) {
+      text.innerText = petals[i];
+      text.style.opacity = 1;
+      i++;
+    } else {
+      btn.style.display = "none";
+      finalText.style.display = "block";
+    }
+  }, 300);
+}
+
+next();
+</script>
+
+</body>
+</html>
