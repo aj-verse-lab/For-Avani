@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Choose You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #0b1c2d, #1c3b57);
+  font-family: 'Georgia', serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* soft glow */
+.glow {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  animation: float linear infinite;
+}
+@keyframes float {
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-10vh); opacity: 0.8; }
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(18px);
+  border-radius: 30px;
+  padding: 40px;
+  width: 90%;
+  max-width: 440px;
+  text-align: center;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: normal;
+  margin-bottom: 24px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.9;
+  min-height: 140px;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+button {
+  margin-top: 30px;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  background: #f4b6c2;
+  color: #2c2c2c;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.final {
+  display: none;
+  font-size: 16px;
+  line-height: 2;
+  margin-top: 26px;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Before I say anything 🤍</h1>
+
+  <div class="text" id="text"></div>
+
+  <button id="btn" onclick="next()">Read slowly</button>
+
+  <div class="final" id="finalText">
+    I am not asking you for promises today.<br><br>
+    I am not asking you for forever today.<br><br>
+    I am simply telling you this.<br><br>
+    I choose you.<br><br>
+    Today.<br>
+    Tomorrow.<br>
+    And in all the quiet days in between.<br><br>
+    Happy Propose Day, Avani 🤍
+  </div>
+</div>
+
+<script>
+// floating glow dots
+for (let i = 0; i < 45; i++) {
+  const g = document.createElement("div");
+  g.className = "glow";
+  g.style.left = Math.random() * 100 + "vw";
+  g.style.animationDuration = (18 + Math.random() * 20) + "s";
+  g.style.animationDelay = Math.random() * 20 + "s";
+  document.body.appendChild(g);
+}
+
+const lines = [
+  "I want to tell you something without rushing it.",
+  "Without expectations. Without pressure.",
+  "Because what I feel for you deserves honesty.",
+  "Being with you feels calm. Steady. Real.",
+  "You do not make me question myself.",
+  "You make me want to show up better.",
+  "Not louder. Not bigger.",
+  "Just more present.",
+  "So before anything else in this world.",
+  "I want you to know this."
+];
+
+let i = 0;
+const text = document.getElementById("text");
+const btn = document.getElementById("btn");
+const finalText = document.getElementById("finalText");
+
+function next() {
+  text.style.opacity = 0;
+
+  setTimeout(() => {
+    if (i < lines.length) {
+      text.innerText = lines[i];
+      text.style.opacity = 1;
+      i++;
+    } else {
+      btn.style.display = "none";
+      finalText.style.display = "block";
+    }
+  }, 300);
+}
+
+next();
+</script>
+
+</body>
+</html>
