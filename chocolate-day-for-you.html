@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chocolate Day</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #3b1f1f, #1a0f0f);
+  font-family: 'Georgia', serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* floating chocolate dots */
+.dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-10vh); opacity: 0.6; }
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(18px);
+  border-radius: 30px;
+  padding: 38px;
+  width: 90%;
+  max-width: 440px;
+  text-align: center;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: normal;
+  margin-bottom: 18px;
+}
+
+.choco {
+  font-size: 46px;
+  margin-bottom: 20px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.9;
+  min-height: 120px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+button {
+  margin-top: 28px;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  background: #f5c16c;
+  color: #2c2c2c;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.final {
+  display: none;
+  font-size: 16px;
+  line-height: 2;
+  margin-top: 22px;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Happy Chocolate Day 🍫</h1>
+
+  <div class="choco">🍫</div>
+
+  <div class="text" id="text"></div>
+
+  <button id="btn" onclick="next()">Unwrap another</button>
+
+  <div class="final" id="finalText">
+    Chocolates are sweet.<br>
+    But they melt.<br><br>
+    What I feel for you stays.<br><br>
+    It lingers.<br>
+    It grows.<br>
+    And it makes me want to see you soon.<br><br>
+    Happy Chocolate Day, Avani 🤍
+  </div>
+</div>
+
+<script>
+// floating dots
+for (let i = 0; i < 40; i++) {
+  const d = document.createElement("div");
+  d.className = "dot";
+  d.style.left = Math.random() * 100 + "vw";
+  d.style.animationDuration = (16 + Math.random() * 20) + "s";
+  d.style.animationDelay = Math.random() * 20 + "s";
+  document.body.appendChild(d);
+}
+
+const lines = [
+  "I wish I could hand you your favorite chocolate right now.",
+  "The kind you take small bites of.",
+  "The kind you let melt slowly.",
+  "Because some things are better when they are not rushed.",
+  "That is how I feel about us.",
+  "Sweet, comfortable, and easy.",
+  "You make me smile without trying.",
+  "And yes, you are sweeter than any chocolate I know."
+];
+
+let i = 0;
+const text = document.getElementById("text");
+const btn = document.getElementById("btn");
+const finalText = document.getElementById("finalText");
+
+function next() {
+  text.style.opacity = 0;
+
+  setTimeout(() => {
+    if (i < lines.length) {
+      text.innerText = lines[i];
+      text.style.opacity = 1;
+      i++;
+    } else {
+      btn.style.display = "none";
+      finalText.style.display = "block";
+    }
+  }, 300);
+}
+
+next();
+</script>
+
+</body>
+</html>
