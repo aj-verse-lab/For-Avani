@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Official Movie Date Ticket</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(160deg, #0f0c29, #302b63, #24243e);
+  font-family: 'Georgia', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2c2c2c;
+}
+
+.ticket {
+  width: 92%;
+  max-width: 420px;
+  background: #fffaf3;
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket:before,
+.ticket:after {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: #0f0c29;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ticket:before { left: -14px; }
+.ticket:after { right: -14px; }
+
+h1 {
+  font-size: 18px;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+}
+
+.section {
+  font-size: 14px;
+  line-height: 1.9;
+  display: none;
+}
+
+.section.active {
+  display: block;
+  animation: fade 0.8s ease;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.divider {
+  margin: 18px 0;
+  border-top: 1px dashed #999;
+}
+
+button {
+  margin-top: 22px;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 24px;
+  background: #302b63;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.small {
+  font-size: 13px;
+  opacity: 0.85;
+}
+</style>
+</head>
+
+<body>
+
+<div class="ticket">
+
+  <!-- PAGE 1 -->
+  <div class="section active">
+    <h1>🎟️ OFFICIAL MOVIE DATE TICKET 🎟️</h1>
+
+    <div class="divider"></div>
+
+    🎬 <b>Movie:</b> O’Romeo<br>
+    🌟 <b>Lead Actor:</b> Shahid Kapoor<br>
+    ❤️ <b>Special Guest:</b> Avani<br><br>
+
+    📅 <b>Date:</b> 13 February 2026<br>
+    ⏰ <b>Show Time:</b> Whenever we arrive together<br>
+    📍 <b>Venue:</b> Movie theatre<br>
+    🍿 <b>Seat Type:</b> Side-by-side, hand-holding enabled
+
+    <div class="divider"></div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="section">
+    <h1>🎫 TICKET DETAILS</h1>
+
+    <div class="divider"></div>
+
+    <b>Issued To:</b> Avani<br>
+    <b>Issued By:</b> Me<br>
+    <b>Valid For:</b> One romantic movie date<br><br>
+
+    <b>Includes:</b><br>
+    • Popcorn sharing<br>
+    • Filmy smiles<br>
+    • You leaning on me<br>
+    • Me watching you more than the screen
+
+    <div class="divider"></div>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="section">
+    <h1>🎬 TICKET STATUS</h1>
+
+    <div class="divider"></div>
+
+    ☑️ <b>CONFIRMED</b><br>
+    ❌ <b>NON-REFUNDABLE</b><br>
+    <span class="small">(my heart is all in)</span>
+
+    <div class="divider"></div>
+
+    🎬 <b>DISCLAIMER:</b><br>
+    Shahid Kapoor may appear charming on screen.<br>
+    The real Romeo will be sitting right next to you 😌❤️
+  </div>
+
+  <!-- PAGE 4 -->
+  <div class="section">
+    <h1>💫 ONE LAST THING</h1>
+
+    <div class="divider"></div>
+
+    This ticket doesn’t expire after the movie.<br><br>
+
+    It’s just one scene<br>
+    from a very long story<br>
+    with you 💫
+  </div>
+
+  <button onclick="nextPage()">Next</button>
+
+</div>
+
+<script>
+let page = 0;
+const pages = document.querySelectorAll('.section');
+
+function nextPage() {
+  pages[page].classList.remove('active');
+  page++;
+
+  if (page >= pages.length) page = 0;
+
+  pages[page].classList.add('active');
+}
+</script>
+
+</body>
+</html>
