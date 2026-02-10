@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kiss Day</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #2b0f14, #120709);
+  font-family: 'Georgia', serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* floating soft hearts */
+.heart {
+  position: absolute;
+  font-size: 14px;
+  opacity: 0.5;
+  animation: float linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-10vh); opacity: 0.6; }
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(18px);
+  border-radius: 32px;
+  padding: 42px;
+  width: 90%;
+  max-width: 460px;
+  text-align: center;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: normal;
+  margin-bottom: 18px;
+}
+
+.kiss {
+  font-size: 56px;
+  margin-bottom: 18px;
+  animation: pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.text {
+  font-size: 16px;
+  line-height: 2;
+  min-height: 150px;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+button {
+  margin-top: 30px;
+  padding: 12px 34px;
+  border-radius: 30px;
+  border: none;
+  background: #f4b6c2;
+  color: #2c2c2c;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.final {
+  display: none;
+  font-size: 16px;
+  line-height: 2.1;
+  margin-top: 26px;
+  animation: fadeIn 2.2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Happy Kiss Day 💋</h1>
+
+  <div class="kiss">💋</div>
+
+  <div class="text" id="text"></div>
+
+  <button id="btn" onclick="next()">Come closer</button>
+
+  <div class="final" id="finalText">
+    Not every kiss is about lips.<br><br>
+    Some are about comfort.<br>
+    Some are about reassurance.<br>
+    Some are about staying.<br><br>
+    The kisses I want to give you<br>
+    are the ones that make you feel safe enough<br>
+    to close your eyes and stay right there.<br><br>
+    Happy Kiss Day, Avani 🤍
+  </div>
+</div>
+
+<script>
+// floating hearts
+for (let i = 0; i < 45; i++) {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = "🤍";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (18 + Math.random() * 20) + "s";
+  h.style.animationDelay = Math.random() * 20 + "s";
+  document.body.appendChild(h);
+}
+
+const lines = [
+  "If I were with you right now.",
+  "I would not rush anything.",
+  "I would look at you first.",
+  "Let the moment feel right.",
+  "A kiss on your forehead.",
+  "A kiss on your hand.",
+  "A kiss that says I am here.",
+  "Only if you want it."
+];
+
+let i = 0;
+const text = document.getElementById("text");
+const btn = document.getElementById("btn");
+const finalText = document.getElementById("finalText");
+
+function next() {
+  text.style.opacity = 0;
+
+  setTimeout(() => {
+    if (i < lines.length) {
+      text.innerText = lines[i];
+      text.style.opacity = 1;
+      i++;
+    } else {
+      btn.style.display = "none";
+      finalText.style.display = "block";
+    }
+  }, 300);
+}
+
+next();
+</script>
+
+</body>
+</html>
