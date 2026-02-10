@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Promise Day</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #0f2a2d, #081416);
+  font-family: 'Georgia', serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* calm floating lights */
+.light {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  animation: rise linear infinite;
+}
+
+@keyframes rise {
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-10vh); opacity: 0.7; }
+}
+
+.card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  padding: 42px;
+  width: 90%;
+  max-width: 460px;
+  text-align: center;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: normal;
+  margin-bottom: 24px;
+}
+
+.hand {
+  font-size: 46px;
+  margin-bottom: 18px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 2;
+  min-height: 150px;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+button {
+  margin-top: 28px;
+  padding: 12px 32px;
+  border-radius: 30px;
+  border: none;
+  background: #c6e3e3;
+  color: #1b2b2b;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.final {
+  display: none;
+  font-size: 16px;
+  line-height: 2;
+  margin-top: 26px;
+  animation: fadeIn 2.2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Happy Promise Day 🤝</h1>
+
+  <div class="hand">🤍</div>
+
+  <div class="text" id="text"></div>
+
+  <button id="btn" onclick="next()">Read a promise</button>
+
+  <div class="final" id="finalText">
+    These are not promises meant to impress you.<br><br>
+    They are promises meant to protect you.<br><br>
+    I cannot promise perfection.<br>
+    But I promise presence.<br><br>
+    I promise honesty.<br>
+    I promise effort.<br>
+    And I promise to choose you with care.<br><br>
+    Happy Promise Day, Avani 🤍
+  </div>
+</div>
+
+<script>
+// floating calm lights
+for (let i = 0; i < 45; i++) {
+  const l = document.createElement("div");
+  l.className = "light";
+  l.style.left = Math.random() * 100 + "vw";
+  l.style.animationDuration = (20 + Math.random() * 22) + "s";
+  l.style.animationDelay = Math.random() * 20 + "s";
+  document.body.appendChild(l);
+}
+
+const promises = [
+  "I promise to listen to you without interrupting your feelings.",
+  "I promise to respect your pace, even when it is different from mine.",
+  "I promise to protect your peace, not disturb it.",
+  "I promise to communicate instead of assuming.",
+  "I promise to show up, especially on the quiet days.",
+  "I promise to grow with you, not ahead of you.",
+  "I promise to care gently, not possessively."
+];
+
+let i = 0;
+const text = document.getElementById("text");
+const btn = document.getElementById("btn");
+const finalText = document.getElementById("finalText");
+
+function next() {
+  text.style.opacity = 0;
+
+  setTimeout(() => {
+    if (i < promises.length) {
+      text.innerText = promises[i];
+      text.style.opacity = 1;
+      i++;
+    } else {
+      btn.style.display = "none";
+      finalText.style.display = "block";
+    }
+  }, 300);
+}
+
+next();
+</script>
+
+</body>
+</html>
