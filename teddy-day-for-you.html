@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Teddy Day</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #1b1f3b, #0e1024);
+  font-family: 'Georgia', serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* soft floating warmth dots */
+.warm {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  animation: float linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-10vh); opacity: 0.7; }
+}
+
+.card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(18px);
+  border-radius: 30px;
+  padding: 40px;
+  width: 90%;
+  max-width: 440px;
+  text-align: center;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+.teddy {
+  font-size: 64px;
+  margin-bottom: 18px;
+  animation: hug 3s ease-in-out infinite;
+}
+
+@keyframes hug {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.9;
+  min-height: 130px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+button {
+  margin-top: 28px;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  background: #f4b6c2;
+  color: #2c2c2c;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.final {
+  display: none;
+  font-size: 16px;
+  line-height: 2;
+  margin-top: 24px;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Happy Teddy Day 🧸</h1>
+
+  <div class="teddy">🧸</div>
+
+  <div class="text" id="text"></div>
+
+  <button id="btn" onclick="next()">Come closer</button>
+
+  <div class="final" id="finalText">
+    If I were with you right now,<br><br>
+    I would wrap you in my arms,<br>
+    not to say anything,<br>
+    not to fix anything,<br><br>
+    just to let you feel safe.<br><br>
+    Until I can do that in real life,<br>
+    let this be my hug for you.<br><br>
+    Happy Teddy Day, Avani 🤍
+  </div>
+</div>
+
+<script>
+// floating warmth dots
+for (let i = 0; i < 40; i++) {
+  const w = document.createElement("div");
+  w.className = "warm";
+  w.style.left = Math.random() * 100 + "vw";
+  w.style.animationDuration = (18 + Math.random() * 20) + "s";
+  w.style.animationDelay = Math.random() * 20 + "s";
+  document.body.appendChild(w);
+}
+
+const lines = [
+  "Some days do not need words.",
+  "They just need comfort.",
+  "Someone to sit next to you quietly.",
+  "Someone who lets you be exactly how you are.",
+  "This is what you feel like to me.",
+  "Comfort without questions.",
+  "Warmth without conditions.",
+  "A place where I want you to rest."
+];
+
+let i = 0;
+const text = document.getElementById("text");
+const btn = document.getElementById("btn");
+const finalText = document.getElementById("finalText");
+
+function next() {
+  text.style.opacity = 0;
+
+  setTimeout(() => {
+    if (i < lines.length) {
+      text.innerText = lines[i];
+      text.style.opacity = 1;
+      i++;
+    } else {
+      btn.style.display = "none";
+      finalText.style.display = "block";
+    }
+  }, 300);
+}
+
+next();
+</script>
+
+</body>
+</html>
