@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Avani</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at center, #120014, #000);
+  font-family: 'Georgia', serif;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+/* floating hearts */
+.heart {
+  position: absolute;
+  font-size: 14px;
+  opacity: 0.4;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-10vh); opacity: 0.7; }
+}
+
+.container {
+  max-width: 600px;
+  padding: 40px;
+  text-align: center;
+  z-index: 2;
+}
+
+.main-heart {
+  font-size: 42px;
+  animation: pulse 2.2s infinite;
+  margin-bottom: 30px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.35); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
+
+.text {
+  font-size: 19px;
+  line-height: 2;
+  min-height: 160px;
+  transition: opacity 1s ease;
+}
+
+.hold {
+  margin-top: 35px;
+  padding: 16px 44px;
+  border-radius: 40px;
+  border: none;
+  background: #fff;
+  color: #111;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  pointer-events: none;
+  transition: background 1.5s ease;
+}
+
+.final {
+  display: none;
+  font-size: 22px;
+  line-height: 2.2;
+  margin-top: 30px;
+  animation: fadeIn 3s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="container">
+
+  <div class="main-heart">♥</div>
+
+  <div class="text" id="text">
+    Today doesn’t need noise.<br><br>
+    It needs honesty.<br>
+    It needs presence.<br>
+    It needs this moment.
+  </div>
+
+  <button class="hold" id="holdBtn">
+    Press and hold
+  </button>
+
+  <div class="final" id="finalText">
+    Avani,<br><br>
+    When you hold this,<br>
+    imagine it’s my hand.<br><br>
+    I want to be the place you rest.<br>
+    The person you come to.<br>
+    The one you choose when the world feels heavy.<br><br>
+    I love you.<br><br>
+    Come be with me.
+  </div>
+
+</div>
+
+<script>
+/* floating hearts */
+for (let i = 0; i < 60; i++) {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = "♥";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (14 + Math.random() * 16) + "s";
+  h.style.animationDelay = Math.random() * 20 + "s";
+  document.body.appendChild(h);
+}
+
+const messages = [
+  "I miss you.",
+  "You feel like home.",
+  "I choose you.",
+  "I want you here.",
+  "You calm me.",
+  "Stay."
+];
+
+let msgIndex = 0;
+let holdInterval;
+const text = document.getElementById("text");
+const overlay = document.getElementById("overlay");
+const finalText = document.getElementById("finalText");
+const holdBtn = document.getElementById("holdBtn");
+
+holdBtn.addEventListener("mousedown", startHold);
+holdBtn.addEventListener("touchstart", startHold);
+holdBtn.addEventListener("mouseup", endHold);
+holdBtn.addEventListener("mouseleave", endHold);
+holdBtn.addEventListener("touchend", endHold);
+
+function startHold() {
+  overlay.style.background = "rgba(0,0,0,0.55)";
+  holdInterval = setInterval(() => {
+    text.innerHTML = messages[msgIndex % messages.length];
+    msgIndex++;
+  }, 1200);
+}
+
+function endHold() {
+  clearInterval(holdInterval);
+  overlay.style.background = "rgba(0,0,0,0)";
+  text.innerHTML = "";
+  finalText.style.display = "block";
+  holdBtn.style.display = "none";
+}
+</script>
+
+</body>
+</html>
