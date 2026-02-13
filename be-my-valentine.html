@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Avani</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #1b0f2e, #0d0618);
+  font-family: 'Georgia', serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 550px;
+  padding: 40px;
+  text-align: center;
+}
+
+.heart {
+  font-size: 32px;
+  animation: pulse 3s infinite ease-in-out;
+  margin-bottom: 25px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
+
+.section {
+  font-size: 18px;
+  line-height: 2;
+  display: none;
+  animation: fade 1.5s forwards;
+}
+
+.section.active {
+  display: block;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.name {
+  font-size: 26px;
+  letter-spacing: 4px;
+  margin-top: 20px;
+}
+
+button {
+  margin-top: 35px;
+  padding: 12px 36px;
+  border-radius: 30px;
+  border: none;
+  background: #ffffff;
+  color: #111;
+  font-size: 14px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="heart">♥</div>
+
+  <!-- PAGE 1 -->
+  <div class="section active">
+    Some people come into your life loudly.<br><br>
+    And some…<br>
+    quietly change everything.
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="section">
+    With you,<br><br>
+    it wasn’t noise.<br>
+    It wasn’t drama.<br><br>
+    It was comfort.<br>
+    It was safety.<br>
+    It was something that felt right.
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="section">
+    I don’t just like you.<br><br>
+    I admire you.<br>
+    I respect you.<br>
+    I care about you deeply.<br><br>
+    And every day,<br>
+    I find myself choosing you.
+  </div>
+
+  <!-- PAGE 4 -->
+  <div class="section">
+    On good days.<br>
+    On heavy days.<br>
+    On quiet nights.<br><br>
+    I want to be the person<br>
+    you feel safe coming to.
+  </div>
+
+  <!-- PAGE 5 -->
+  <div class="section">
+    <div class="name">AVANI</div><br><br>
+    Not because it’s Valentine’s Day.<br><br>
+    But because I genuinely want to choose you.<br><br>
+    Today.<br>
+    And the days after.
+  </div>
+
+  <!-- PAGE 6 -->
+  <div class="section">
+    Will you be my Valentine?<br><br>
+    Not just for a day.<br><br>
+    But as someone I care for,<br>
+    protect,<br>
+    and grow with.<br><br>
+    Because I think…<br>
+    I’m already falling for you.
+  </div>
+
+  <button onclick="next()">Next</button>
+
+</div>
+
+<script>
+let page = 0;
+const sections = document.querySelectorAll('.section');
+
+function next() {
+  sections[page].classList.remove('active');
+  page++;
+  if (page >= sections.length) {
+    page = sections.length - 1;
+  }
+  sections[page].classList.add('active');
+}
+</script>
+
+</body>
+</html>
