@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Avani & Jigar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  background: #141414;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+/* HERO SECTION */
+.hero {
+  height: 80vh;
+  background: linear-gradient(to top, #141414, transparent),
+              url('https://images.unsplash.com/photo-1519681393784-d120267933ba');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding: 50px;
+}
+
+.hero-content {
+  max-width: 500px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.play {
+  background: white;
+  color: black;
+}
+
+.info {
+  background: rgba(109,109,110,0.7);
+  color: white;
+}
+
+/* ROWS */
+.section {
+  margin: 20px;
+}
+
+.row {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+}
+
+.card {
+  min-width: 220px;
+  height: 130px;
+  background: #222;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.15);
+  z-index: 2;
+}
+
+.card span {
+  font-size: 14px;
+}
+
+/* SCROLLBAR HIDE */
+.row::-webkit-scrollbar {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>Avani & Jigar</h1>
+    <p>
+      A story about two people who found comfort, chaos,
+      and something real in each other.
+    </p>
+
+    <div class="buttons">
+      <button class="btn play" onclick="go('valentines-stay-with-me.html')">▶ Play</button>
+      <button class="btn info" onclick="go('be-my-valentine.html')">More Info</button>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 1 -->
+<div class="section">
+  <h3>Continue Watching</h3>
+  <div class="row">
+    <div class="card" onclick="go('valentines-stay-with-me.html')">
+      <span>Stay With Me ❤️</span>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 2 -->
+<div class="section">
+  <h3>Our Moments</h3>
+  <div class="row">
+    <div class="card" onclick="go('movie-date-ticket.html')">
+      <span>Movie Date 🎟️</span>
+    </div>
+
+    <div class="card" onclick="go('7-reasons.html')">
+      <span>7 Reasons 💌</span>
+    </div>
+
+    <div class="card" onclick="go('mumbai-quiet.html')">
+      <span>When You’re Tired 🌙</span>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 3 -->
+<div class="section">
+  <h3>Because I Love You</h3>
+  <div class="row">
+    <div class="card" onclick="go('courage-love.html')">
+      <span>Courage Love 🐶</span>
+    </div>
+
+    <div class="card" onclick="go('hug-day-for-you.html')">
+      <span>Hug Day 🤍</span>
+    </div>
+
+    <div class="card" onclick="go('kiss-day-for-you.html')">
+      <span>Kiss Day 💋</span>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 4 -->
+<div class="section">
+  <h3>Valentine Special</h3>
+  <div class="row">
+    <div class="card" onclick="go('valentines-experience.html')">
+      <span>Valentine Experience 💫</span>
+    </div>
+
+    <div class="card" onclick="go('be-my-valentine.html')">
+      <span>Be Mine ❤️</span>
+    </div>
+  </div>
+</div>
+
+<script>
+function go(page) {
+  window.location.href = page;
+}
+</script>
+
+</body>
+</html>
